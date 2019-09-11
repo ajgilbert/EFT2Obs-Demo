@@ -3,9 +3,11 @@ Automatically parameterise the effect of EFT coefficients on arbitrary observabl
 
 ## Instructions
 
-Note that this workflow has only been tested on lxplus.
+Note that this workflow has only been tested on lxplus7.
 
 **At the moment LHAPDF is not installed automatically. Please edit `env.sh` to change the path for `lhapdf-config` if you do not have /cvmfs mounted.**
+
+**Only for CMS users** : suggest to set environment in CMSSW_9_3_15 to get up-to-date compilers/python etc.
 
 Then run the following setup scripts in order:
 
