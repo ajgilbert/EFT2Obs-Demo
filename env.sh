@@ -5,6 +5,7 @@ export HIGGSPRODMODE=GGF
 export MG_DIR="MG5_aMC_v2_6_6"
 export MG_TARBALL="MG5_aMC_v2.6.6.tar.gz"
 export RIVET_VERSION="3.0.1"
+export PYTHIA8DATA=${PWD}/MG5_aMC_v2_6_6/HEPTools/pythia8/share/Pythia8/xmldoc
 
 if [ -f "local/rivetenv.sh" ]; then
 	source local/rivetenv.sh

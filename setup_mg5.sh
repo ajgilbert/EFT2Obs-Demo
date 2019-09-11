@@ -27,6 +27,7 @@ rm ${MG_TARBALL}
 
 pushd ${MG_DIR}
 ./bin/mg5_aMC ../mgconfigscript
+patch -p0 < ../madevent_interface.patch
 patch -p0 < ../MG5aMC_PY8_interface.cc.patch
 pushd HEPTools/MG5aMC_PY8_interface
 python compile.py ../pythia8

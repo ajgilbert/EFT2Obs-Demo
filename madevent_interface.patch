@@ -1,0 +1,33 @@
+--- madgraph/interface/madevent_interface.py	2019-06-28 09:03:51.000000001 +0200
++++ madgraph/interface/madevent_interface.py	2019-09-11 09:17:33.000000001 +0200
+@@ -4283,19 +4283,19 @@
+         # Write a bash wrapper to run the shower with custom environment variables
+         wrapper_path = pjoin(self.me_dir,'Events',self.run_name,'run_shower.sh')
+         wrapper = open(wrapper_path,'w')
+-        shell = 'bash' if misc.get_shell_type() in ['bash',None] else 'tcsh'
++        shell = 'bash \nexport ' # if misc.get_shell_type() in ['bash',None] else 'tcsh'
+         shell_exe = None
+-        if os.path.exists('/usr/bin/env'):
+-            shell_exe = '/usr/bin/env %s'%shell
+-        else: 
+-            shell_exe = misc.which(shell)
+-            if not shell_exe:
+-                raise self.InvalidCmd('No s hell could be found in your environment.\n'+
+-                  "Make sure that either '%s' is in your path or that the"%shell+\
+-                  " command '/usr/bin/env %s' exists and returns a valid path."%shell)
++        # if os.path.exists('/usr/bin/env'):
++        shell_exe = '/usr/bin/env %s'%shell
++        #else: 
++        #    shell_exe = misc.which(shell)
++        #    if not shell_exe:
++        #        raise self.InvalidCmd('No s hell could be found in your environment.\n'+
++        #          "Make sure that either '%s' is in your path or that the"%shell+\
++        #          " command '/usr/bin/env %s' exists and returns a valid path."%shell)
+                 
+-        exe_cmd = "#!%s\n%s"%(shell_exe,' '.join(
+-                     [preamble+pythia_main,
++        exe_cmd = "#!%s\n%s"%(shell_exe+preamble,' '.join(
++                     [pythia_main,
+                       os.path.basename(pythia_cmd_card)]))
+ 
+         wrapper.write(exe_cmd)
